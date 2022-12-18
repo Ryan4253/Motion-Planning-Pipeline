@@ -7,7 +7,7 @@ class RRT : public MotionPlanner{
     public:
     RRT(const SearchSpace& iField, double iGoalSampleRate, okapi::QLength iStepSize, int iMaxIteration);
 
-    DiscretePath generatePath(const Point& iStart, const Point& iEnd) override;
+    virtual DiscretePath generatePath(const Point& iStart, const Point& iEnd) override;
 
     Point getRandomPoint() const;
 
