@@ -22,6 +22,15 @@ std::vector<Point>::iterator DiscretePath::end(){
     return path.end();
 }
 
+std::vector<Point>::const_iterator DiscretePath::cbegin() const{
+    return path.cbegin();
+}
+
+
+std::vector<Point>::const_iterator DiscretePath::cend() const{
+    return path.cend();
+}
+
 Point& DiscretePath::operator[](int iIndex){
 
     return path[std::max(std::min(iIndex, (int)path.size()), 0)];

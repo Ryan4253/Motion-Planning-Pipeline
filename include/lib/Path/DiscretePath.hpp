@@ -13,6 +13,10 @@ class DiscretePath{
 
     std::vector<Point>::iterator end();
 
+    std::vector<Point>::const_iterator cbegin() const;
+
+    std::vector<Point>::const_iterator cend() const;
+
     Point& operator[](int iIndex);
 
     Point getPoint(int iIndex) const;
