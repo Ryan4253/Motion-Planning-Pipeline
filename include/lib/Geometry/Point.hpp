@@ -61,3 +61,5 @@ class Point{
     okapi::QLength x = 0 * okapi::meter;
     okapi::QLength y = 0 * okapi::meter;
 };
+
+Point operator*(std::pair<double, double> iPoint, okapi::QLength iMag);

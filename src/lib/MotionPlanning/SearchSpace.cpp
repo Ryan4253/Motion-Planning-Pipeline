@@ -1,12 +1,12 @@
 #include "SearchSpace.hpp"
 
 SearchSpace::SearchSpace(okapi::QLength iX, okapi::QLength iY, 
-                std::vector<std::unique_ptr<Polygon>> iObstacleList, 
+                std::vector<std::shared_ptr<Polygon>> iObstacleList, 
                 okapi::QLength iRadius){
     x = iX;
     y = iY;
-    obstacleList = std::move(iObstacleList);
-    radius = iRadius;
+    obstacleList = iObstacleList;
+    radius = iRadius;   
 
     const auto p1 = Point(radius, radius);
     const auto p2 = Point(radius, y-radius);
