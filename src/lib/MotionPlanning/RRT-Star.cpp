@@ -1,5 +1,7 @@
 #include "RRT-Star.hpp"
 
+namespace lib{
+
 RRT_Star::RRT_Star(const SearchSpace& iField, 
          double iGoalSampleRate, 
          okapi::QLength iStepSize, 
@@ -80,4 +82,6 @@ void RRT_Star::chooseParent(const std::shared_ptr<Node>& iNode, const std::vecto
     }
 
     iNode->parent = parent;
+}
+
 }

@@ -4,6 +4,8 @@
 #include <vector>
 #include <random>
 
+namespace lib{
+
 class SearchSpace{
     public:
     SearchSpace(okapi::QLength iX, okapi::QLength iY, 
@@ -25,3 +27,5 @@ class SearchSpace{
     std::vector<std::shared_ptr<Polygon>> obstacleList;
     std::vector<Line> edgeList;
 };
+
+}

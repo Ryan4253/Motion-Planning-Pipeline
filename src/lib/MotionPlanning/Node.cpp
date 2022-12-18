@@ -1,5 +1,7 @@
 #include "Node.hpp"
 
+namespace lib{
+
 Node::Node(const Point& iPoint, const std::weak_ptr<Node>& iParent) : point(iPoint){
     parent = iParent;
 } 
@@ -24,3 +26,4 @@ bool Node::isRoot() const{
     return parent.expired();
 }
 
+}

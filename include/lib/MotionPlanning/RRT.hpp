@@ -3,6 +3,8 @@
 #include "Node.hpp"
 #include <memory>
 
+namespace lib{
+
 class RRT : public MotionPlanner{
     public:
     RRT(const SearchSpace& iField, double iGoalSampleRate, okapi::QLength iStepSize, int iMaxIteration);
@@ -25,3 +27,5 @@ class RRT : public MotionPlanner{
     std::shared_ptr<Node> goal;
     std::vector<std::shared_ptr<Node>> vertices;
 };
+
+}

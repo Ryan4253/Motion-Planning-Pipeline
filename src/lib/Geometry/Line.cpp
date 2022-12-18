@@ -1,5 +1,7 @@
 #include "Line.hpp"
 
+namespace lib{
+
 Line::Line(const Point& iStart, const Point& iEnd){
     start = iStart;
     end = iEnd;
@@ -82,4 +84,6 @@ bool Line::intersects(const Line& iLine) const{
     }
        
     return true;
+}
+
 }

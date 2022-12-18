@@ -1,6 +1,8 @@
 #pragma once
 #include "Polygon.hpp"
 
+namespace lib{
+
 class Circle : public Polygon{
     public:
     Circle(const Point& iCenter, okapi::QLength iRadius);
@@ -13,3 +15,5 @@ class Circle : public Polygon{
     Point center;
     okapi::QLength radius;
 };
+
+}

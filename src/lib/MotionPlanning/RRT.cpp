@@ -1,5 +1,7 @@
 #include "RRT.hpp"
      
+namespace lib{
+
 RRT::RRT(const SearchSpace& iField, double iGoalSampleRate, okapi::QLength iStepSize, int iMaxIteration) 
     : MotionPlanner(iField){
     goalSampleRate = iGoalSampleRate;
@@ -87,4 +89,6 @@ DiscretePath RRT::retrace() const{
 
     reverse(path.begin(), path.end());
     return DiscretePath(path);
+}
+
 }

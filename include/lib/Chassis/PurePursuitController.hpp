@@ -8,6 +8,8 @@
 #include "lib/Utility/Math.hpp"
 #include <memory>
 
+namespace lib{
+
 class PurePursuitController{
     public:
     PurePursuitController(const std::shared_ptr<okapi::XDriveModel>& iChassis,
@@ -35,3 +37,5 @@ class PurePursuitController{
     int prevIndex = 0;
     double prevT = 0;
 };
+
+}

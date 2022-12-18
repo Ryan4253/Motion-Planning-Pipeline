@@ -1,5 +1,6 @@
 #pragma once
 #include "main.h"
+#include "lib/api.hpp"
 using namespace okapi;
 
 extern Controller master;

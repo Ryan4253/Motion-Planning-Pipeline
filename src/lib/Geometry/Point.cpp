@@ -1,5 +1,7 @@
 #include "Point.hpp"
 
+namespace lib{
+
 Point::Point(okapi::QLength iX, okapi::QLength iY){
     x = iX;
     y = iY;
@@ -105,9 +107,4 @@ Point Point::project(const Point& rhs) const{
     return  rhs * (this->dot(rhs) / rhs.mag() / rhs.mag()).convert(okapi::number);
 }
 
-Point operator*(std::pair<double, double> iPoint, okapi::QLength iMag){
-    return Point(iPoint.first * iMag, iPoint.second * iMag);
 }
-
-
-

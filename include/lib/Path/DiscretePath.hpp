@@ -3,6 +3,8 @@
 #include<vector>
 #include<cmath>
 
+namespace lib{
+
 class DiscretePath{
     public:
     DiscretePath(const std::initializer_list<Point>& iPath);
@@ -29,3 +31,5 @@ class DiscretePath{
     std::vector<Point> path;
     okapi::QLength length;
 };
+
+}

@@ -1,5 +1,7 @@
 #include "DiscretePath.hpp"
 
+namespace lib{
+
 class CubicBezier{
     public:
     struct Knot{
@@ -25,3 +27,5 @@ class CubicBezier{
     std::vector<Point> c1;
     std::vector<Point> c2;
 };
+
+}

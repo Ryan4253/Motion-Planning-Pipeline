@@ -2,6 +2,8 @@
 #include "lib/Geometry/Point.hpp"
 #include<memory>
 
+namespace lib{
+
 struct Node{
     Node(const Point& iPoint, const std::weak_ptr<Node>& iParent = std::weak_ptr<Node>());
 
@@ -17,4 +19,6 @@ struct Node{
     
     std::weak_ptr<Node> parent;
 };
+
+}
 

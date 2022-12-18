@@ -2,6 +2,7 @@
 #include "Rotation.hpp"
 #include "okapi/api/units/QArea.hpp"
 #include <algorithm>
+namespace lib{
 
 class Point{
     public:
@@ -62,4 +63,4 @@ class Point{
     okapi::QLength y = 0 * okapi::meter;
 };
 
-Point operator*(std::pair<double, double> iPoint, okapi::QLength iMag);
+}

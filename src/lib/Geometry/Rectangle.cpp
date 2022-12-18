@@ -1,5 +1,7 @@
 #include "Rectangle.hpp"
 
+namespace lib{
+
 Rectangle::Rectangle(const Point& iBottomLeft, const Point& iTopRight){
     bottomLeft = iBottomLeft;
     topRight = iTopRight;
@@ -28,4 +30,6 @@ bool Rectangle::pointIntersect(const Point& iPoint, okapi::QLength iDist) const{
     auto yEnd = topLeft.Y() + iDist;
 
     return xStart <= iPoint.X() && iPoint.X() <= xEnd && yStart <= iPoint.Y() && iPoint.Y() <= yEnd;
+}
+
 }

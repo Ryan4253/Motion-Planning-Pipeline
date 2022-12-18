@@ -1,6 +1,8 @@
 #pragma once
 #include "Polygon.hpp"
 
+namespace lib{
+
 class Rectangle : public Polygon{
     public:
     Rectangle(const Point& iBottomLeft, const Point& iTopRight);
@@ -15,3 +17,5 @@ class Rectangle : public Polygon{
     Point bottomLeft;
     Point bottomRight;
 };
+
+}

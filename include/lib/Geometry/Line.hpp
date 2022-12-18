@@ -1,6 +1,8 @@
 #pragma once
 #include "Point.hpp"
 
+namespace lib{
+
 class Line{
     public:
     Line(const Point& iStart, const Point& iEnd);
@@ -25,3 +27,5 @@ class Line{
     Point start;
     Point end;
 };
+
+}

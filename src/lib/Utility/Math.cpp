@@ -1,5 +1,7 @@
 #include "Math.hpp"
 
+namespace lib{
+
 double deadband(double iValue, double iDeadband){
     if(std::abs(iValue) < iDeadband){
         return 0;
@@ -14,4 +16,6 @@ double rescale180(double iAngle){
 
 okapi::QAngle rescale180(okapi::QAngle iAngle){
     return rescale180(iAngle.convert(okapi::degree)) * okapi::degree;
+}
+
 }

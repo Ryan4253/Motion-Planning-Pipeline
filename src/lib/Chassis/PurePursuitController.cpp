@@ -1,5 +1,7 @@
 #include "PurePursuitController.hpp"
 
+namespace lib{
+
 PurePursuitController::PurePursuitController(const std::shared_ptr<okapi::XDriveModel>& iChassis,
                 const std::shared_ptr<okapi::Odometry>& iOdometry,
                 const std::shared_ptr<okapi::IterativePositionController<double, double>>& iDistController,
@@ -102,4 +104,6 @@ Point PurePursuitController::closestPoint(const DiscretePath& iPath, const Point
     return *std::min_element(iPath.cbegin(), iPath.cend(), [&iPos](Point a, Point b){
         return a.distTo(iPos) < b.distTo(iPos);
     });
+}
+
 }

@@ -1,5 +1,7 @@
 #include "lib/Geometry/Rotation.hpp"
 
+namespace lib{
+
 Rotation::Rotation(okapi::QAngle iTheta){
     theta = iTheta;
     sine = (sin(iTheta)).convert(okapi::number);
@@ -75,4 +77,6 @@ void Rotation::operator=(const Rotation& rhs){
 
 Rotation Rotation::rotateBy(const Rotation& rhs) const{
     return {(cosine * rhs.cosine - sine * rhs.sine) * okapi::meter, (cosine * rhs.sine + sine * rhs.cosine) * okapi::meter};
+}
+
 }

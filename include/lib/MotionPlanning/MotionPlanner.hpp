@@ -2,6 +2,8 @@
 #include "SearchSpace.hpp"
 #include "lib/Path/DiscretePath.hpp"
 
+namespace lib{
+
 class MotionPlanner{
     public:
     MotionPlanner(const SearchSpace& iField);
@@ -11,3 +13,5 @@ class MotionPlanner{
     protected:
     SearchSpace field;
 };
+
+}

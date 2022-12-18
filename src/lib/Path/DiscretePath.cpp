@@ -1,5 +1,7 @@
 #include "DiscretePath.hpp"
 
+namespace lib{
+
 DiscretePath::DiscretePath(const std::initializer_list<Point>& iPath) : path(iPath){
     length = 0 * okapi::meter;
     for(int i = 0; i < path.size()-1; i++){
@@ -46,4 +48,6 @@ okapi::QLength DiscretePath::getLength() const{
 
 int DiscretePath::size() const{
     return path.size();
+}
+
 }

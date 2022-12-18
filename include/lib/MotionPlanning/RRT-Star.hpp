@@ -1,6 +1,8 @@
 #pragma once
 #include "RRT.hpp"
 
+namespace lib{
+
 class RRT_Star : public RRT{
     public:
     RRT_Star(const SearchSpace& iField, 
@@ -22,3 +24,5 @@ class RRT_Star : public RRT{
     okapi::QLength searchRadius;
     int optimizationIteration;
 };
+
+}

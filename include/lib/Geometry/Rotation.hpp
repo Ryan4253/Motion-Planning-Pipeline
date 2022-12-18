@@ -2,6 +2,8 @@
 #include "okapi/api/units/QAngle.hpp"
 #include "okapi/api/units/QLength.hpp"
 
+namespace lib{
+
 class Rotation{
     public:
     constexpr Rotation() = default;
@@ -45,3 +47,5 @@ class Rotation{
     double cosine{1.0};
     double sine{0.0};
 };
+
+}

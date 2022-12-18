@@ -1,5 +1,7 @@
 #include "SearchSpace.hpp"
 
+namespace lib{
+
 SearchSpace::SearchSpace(okapi::QLength iX, okapi::QLength iY, 
                 std::vector<std::shared_ptr<Polygon>> iObstacleList, 
                 okapi::QLength iRadius){
@@ -62,4 +64,6 @@ bool SearchSpace::checkPointCollision(const Point& iPoint) const{
     }
 
     return false;
+}
+
 }

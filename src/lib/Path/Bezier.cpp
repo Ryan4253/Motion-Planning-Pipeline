@@ -1,5 +1,7 @@
 #include "Bezier.hpp"
 
+namespace lib{
+
 CubicBezier::Knot::Knot(okapi::QLength iX, okapi::QLength iY, okapi::QAngle iAngle, okapi::QLength iMagnitude){
     x = iX, y = iY, angle = iAngle, magnitude = iMagnitude;
 }
@@ -70,4 +72,6 @@ DiscretePath CubicBezier::generate(okapi::QLength iStep, bool iEnd) const{
     }
 
     return DiscretePath(ret);
+}
+
 }
