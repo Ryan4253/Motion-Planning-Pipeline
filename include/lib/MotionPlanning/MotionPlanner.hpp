@@ -10,5 +10,4 @@ class MotionPlanner{
 
     protected:
     SearchSpace field;
-
 };

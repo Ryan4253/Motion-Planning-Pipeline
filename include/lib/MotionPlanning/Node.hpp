@@ -14,6 +14,7 @@ struct Node{
     bool isRoot() const;
 
     Point point;
+    
     std::weak_ptr<Node> parent;
 };
 
