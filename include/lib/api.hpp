@@ -14,6 +14,8 @@
 #include "lib/Path/DiscretePath.hpp"
 #include "lib/Path/Bezier.hpp"
 
+#include "lib/Odometry/IteratingThreeEncoderOdometry.hpp"
+
 #include "lib/MotionPlanning/SearchSpace.hpp"
 #include "lib/MotionPlanning/Node.hpp"
 #include "lib/MotionPlanning/MotionPlanner.hpp"

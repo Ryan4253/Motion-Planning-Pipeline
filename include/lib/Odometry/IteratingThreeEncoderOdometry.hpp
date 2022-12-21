@@ -5,11 +5,13 @@
 namespace lib{
 
 class IteratingThreeEncoderOdometry : public okapi::ThreeEncoderOdometry, public TaskWrapper{
+    public:
     IteratingThreeEncoderOdometry(const okapi::TimeUtil& iTimeUtil,
                                   const std::shared_ptr<okapi::ReadOnlyChassisModel>& iModel,
                                   const okapi::ChassisScales& iChassisScales,
                                   const std::shared_ptr<okapi::Logger>& iLogger = okapi::Logger::getDefaultLogger());
 
+    protected:
     void loop() override;
 };
 
