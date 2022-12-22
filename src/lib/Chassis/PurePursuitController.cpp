@@ -29,9 +29,9 @@ void PurePursuitController::moveToPoint(const Point& iPoint){
         double xOutput = distOutput * cos(pos.point.angleTo(iPoint).convert(okapi::radian));
         double yOutput = distOutput * sin(pos.point.angleTo(iPoint).convert(okapi::radian));
         chassis->fieldOrientedXArcade(xOutput, -yOutput, -turnOutput, pos.rotation.Theta());
-        
         pros::delay(10);
-    }while(!distController->isSettled() && !turnController->isDisabled());
+    }while(true);
+    
 
     chassis->fieldOrientedXArcade(0, 0, 0, targetAngle);
 }
@@ -40,25 +40,28 @@ void PurePursuitController::followPath(const DiscretePath& iPath){
     okapi::QAngle targetAngle = odometry->getState().theta;
     distController->reset();
     turnController->reset();
+    prevT = 0;
+    prevIndex = 0;
     
     do{
         Pose pos = Pose(odometry->getState());
         Point target = getLookAheadPoint(iPath, pos.point);
+        std::cout << target.X().convert(okapi::foot) << " " << target.Y().convert(okapi::foot) << std::endl;
 
         double distOutput = distController->step(-pos.point.distTo(target).convert(okapi::inch));
         double turnOutput = turnController->step(-rescale180(targetAngle - pos.rotation.Theta()).convert(okapi::degree)); 
         double xOutput = distOutput * cos(pos.point.angleTo(target).convert(okapi::radian));
         double yOutput = distOutput * sin(pos.point.angleTo(target).convert(okapi::radian));
-        chassis->fieldOrientedXArcade(xOutput, -yOutput, turnOutput, pos.rotation.Theta());
+        chassis->fieldOrientedXArcade(xOutput, -yOutput, -turnOutput, pos.rotation.Theta());
         pros::delay(10);
-    }while(!distController->isSettled() && !turnController->isDisabled());
+    }while(true);
 
     chassis->fieldOrientedXArcade(0, 0, 0, targetAngle);
 }
 
 Point PurePursuitController::getLookAheadPoint(const DiscretePath& iPath, const Point& iPos){
-    if(iPos.distTo(iPath.getPoint(iPath.size()-1)) < lookAheadDistance){
-            return iPath.getPoint(iPath.size()-1);
+    if(iPos.distTo(iPath.back()) < lookAheadDistance){
+        return iPath.back();
     }
 
     for(int i = prevIndex; i < iPath.size()-1; i++){

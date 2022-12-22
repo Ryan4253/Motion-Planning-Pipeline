@@ -3,6 +3,7 @@
 #include<vector>
 #include<cmath>
 #include<string>
+#include<algorithm>
 
 namespace lib{
 
@@ -19,6 +20,10 @@ class DiscretePath{
     std::vector<Point>::const_iterator cbegin() const;
 
     std::vector<Point>::const_iterator cend() const;
+
+    const Point& front() const;
+
+    const Point& back() const;
 
     Point& operator[](int iIndex);
 

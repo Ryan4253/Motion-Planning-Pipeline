@@ -28,18 +28,24 @@ std::vector<Point>::const_iterator DiscretePath::cbegin() const{
     return path.cbegin();
 }
 
-
 std::vector<Point>::const_iterator DiscretePath::cend() const{
     return path.cend();
 }
 
-Point& DiscretePath::operator[](int iIndex){
+const Point& DiscretePath::front() const{
+    return path.front();
+}
 
-    return path[std::max(std::min(iIndex, (int)path.size()), 0)];
+const Point& DiscretePath::back() const{
+    return path.back();
+}
+
+Point& DiscretePath::operator[](int iIndex){
+    return path[std::clamp(iIndex, 0, (int)path.size())];
 }
 
 Point DiscretePath::getPoint(int iIndex) const{
-    return path[std::max(std::min(iIndex, (int)path.size()), 0)];
+    return path[std::clamp(iIndex, 0, (int)path.size())];
 }
 
 okapi::QLength DiscretePath::getLength() const{
@@ -53,14 +59,9 @@ int DiscretePath::size() const{
 std::string DiscretePath::str() const{
     std::string ret = "";
     for(auto pt : path){
-        ret += std::to_string(pt.X().convert(okapi::foot)) + '\n';
-    }
-
-    for(auto pt : path){
-        ret += std::to_string(pt.Y().convert(okapi::foot)) + '\n';
+        ret += std::to_string(pt.X().convert(okapi::foot)) + ' ' + std::to_string(pt.Y().convert(okapi::foot)) + '\n';
     }
 
     return ret;
 }
-
 }

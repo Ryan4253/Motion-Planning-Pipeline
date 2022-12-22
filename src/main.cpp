@@ -13,7 +13,7 @@ void competition_initialize(){}
 void autonomous(){}
 
 void opcontrol(){
-	//odom->startTask();
+	odom->startTask();
 
 	//PPTenshi->moveToPoint(lib::Point(1_ft, 2_ft));
 	using lib::CubicBezier;
@@ -21,7 +21,7 @@ void opcontrol(){
 	auto bez = CubicBezier({CubicBezier::Knot(0_ft, 0_ft, 90_deg, 2_ft), CubicBezier::Knot(2_ft, 4_ft, 90_deg, 2_ft)});
 	auto path = bez.generate(3_in);
 
-	std::cout << path.str() << std::endl;
+	PPTenshi->followPath(path);
 
 	while (true) {
 		chassis->fieldOrientedXArcade(master.getAnalog(ControllerAnalog::leftY),
@@ -30,7 +30,7 @@ void opcontrol(){
 									  imu->get() * okapi::degree,
 					   				  0.05);
 
-		//std::cout << lib::Pose(odom->getState(StateMode::CARTESIAN)).str() << std::endl;
+		//std::cout << lib::Pose(odom->getState()).str() << std::endl;
 		pros::delay(10);
 	}
 }

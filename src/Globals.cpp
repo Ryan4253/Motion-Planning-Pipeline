@@ -26,7 +26,7 @@ std::shared_ptr<ThreeEncoderXDriveModel> chassis = std::make_shared<ThreeEncoder
 std::shared_ptr<lib::IteratingThreeEncoderOdometry> odom = std::make_shared<lib::IteratingThreeEncoderOdometry>(
     TimeUtilFactory::createDefault(),
     chassis,
-    ChassisScales({7.003_cm / M_PI, 31.279_cm, 15.387_cm, 7.003_cm / M_PI}, 360)
+    ChassisScales({7.003_cm, 31.279_cm, 15.387_cm, 7.003_cm}, 360)
 );
 
 // PID
