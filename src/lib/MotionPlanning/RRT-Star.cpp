@@ -22,6 +22,7 @@ DiscretePath RRT_Star::generatePath(const Point& iStart, const Point& iEnd){
     vertices.clear();
     vertices.push_back(start);
     int optiIter = 0;
+    auto tStart = pros::millis();
 
     for(int i = 1; i <= maxIteration; i++){
         Point sample = getRandomPoint();
@@ -48,6 +49,7 @@ DiscretePath RRT_Star::generatePath(const Point& iStart, const Point& iEnd){
         }
 
         if(optiIter >= optimizationIteration){
+            std::cout << pros::millis()-tStart << std::endl;
             return retrace();
         }
     }

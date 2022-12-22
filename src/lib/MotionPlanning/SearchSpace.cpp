@@ -18,8 +18,7 @@ SearchSpace::SearchSpace(okapi::QLength iX, okapi::QLength iY,
 }
 
 Point SearchSpace::randomPoint() const{
-    static std::random_device rd;
-    static std::mt19937 generator(rd());
+    static std::mt19937 generator(pros::millis());
     static std::uniform_real_distribution<double> distribution(0.0, 1.0);
 
     return Point(x * distribution(generator), y * distribution(generator));

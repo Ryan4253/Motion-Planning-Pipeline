@@ -42,8 +42,7 @@ DiscretePath RRT::generatePath(const Point& iStart, const Point& iEnd){
 }
 
 Point RRT::getRandomPoint() const{
-    static std::random_device rd;
-    static std::mt19937 generator(rd());
+    static std::mt19937 generator(pros::millis());
     static std::uniform_real_distribution<double> distribution(0.0, 1.0);
 
     if(distribution(generator) < goalSampleRate){

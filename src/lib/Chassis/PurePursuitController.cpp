@@ -37,7 +37,7 @@ void PurePursuitController::moveToPoint(const Point& iPoint){
 }
 
 void PurePursuitController::followPath(const DiscretePath& iPath){
-    okapi::QAngle targetAngle = odometry->getState().theta;
+    okapi::QAngle targetAngle = -1 * odometry->getState().theta;
     distController->reset();
     turnController->reset();
     prevT = 0;
@@ -46,8 +46,10 @@ void PurePursuitController::followPath(const DiscretePath& iPath){
     do{
         Pose pos = Pose(odometry->getState());
         Point target = getLookAheadPoint(iPath, pos.point);
-        std::cout << target.X().convert(okapi::foot) << " " << target.Y().convert(okapi::foot) << std::endl;
-
+        pros::lcd::set_text(0, pos.str());
+        pros::lcd::set_text(1, std::to_string(target.X().convert(okapi::foot)) + " " + std::to_string(target.Y().convert(okapi::foot)));
+        pros::lcd::set_text(2, std::to_string(prevIndex));
+        pros::lcd::set_text(3, std::to_string(prevT));
         double distOutput = distController->step(-pos.point.distTo(target).convert(okapi::inch));
         double turnOutput = turnController->step(-rescale180(targetAngle - pos.rotation.Theta()).convert(okapi::degree)); 
         double xOutput = distOutput * cos(pos.point.angleTo(target).convert(okapi::radian));

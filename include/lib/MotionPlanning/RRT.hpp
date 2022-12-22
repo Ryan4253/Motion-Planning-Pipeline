@@ -2,6 +2,7 @@
 #include "MotionPlanner.hpp"
 #include "Node.hpp"
 #include <memory>
+#include<iostream>
 
 namespace lib{
 

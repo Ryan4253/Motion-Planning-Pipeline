@@ -31,8 +31,8 @@ std::shared_ptr<lib::IteratingThreeEncoderOdometry> odom = std::make_shared<lib:
 
 // PID
 ConfigurableTimeUtilFactory timer(1, 1, 100_ms);
-std::shared_ptr<IterativePosPIDController> distPID = std::make_shared<IterativePosPIDController>(0.03, 0, 0, 0, timer.create());
-std::shared_ptr<IterativePosPIDController> turnPID = std::make_shared<IterativePosPIDController>(0.01, 0, 0, 0, timer.create());
+std::shared_ptr<IterativePosPIDController> distPID = std::make_shared<IterativePosPIDController>(0.1, 0, 0, 0, timer.create());
+std::shared_ptr<IterativePosPIDController> turnPID = std::make_shared<IterativePosPIDController>(0.05, 0, 0, 0, timer.create());
 
 // PURE PURSUIT
 std::shared_ptr<lib::PurePursuitController> PPTenshi = std::make_shared<lib::PurePursuitController>(
