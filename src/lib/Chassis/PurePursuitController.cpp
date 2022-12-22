@@ -2,11 +2,13 @@
 
 namespace lib{
 
-PurePursuitController::PurePursuitController(const std::shared_ptr<okapi::XDriveModel>& iChassis,
-                const std::shared_ptr<okapi::Odometry>& iOdometry,
-                const std::shared_ptr<okapi::IterativePositionController<double, double>>& iDistController,
-                const std::shared_ptr<okapi::IterativePositionController<double, double>>& iTurnController,
-                okapi::QLength iLookAheadDistance){
+PurePursuitController::PurePursuitController(
+    const std::shared_ptr<okapi::XDriveModel>& iChassis,
+    const std::shared_ptr<okapi::Odometry>& iOdometry,
+    const std::shared_ptr<okapi::IterativePositionController<double, double>>& iDistController,
+    const std::shared_ptr<okapi::IterativePositionController<double, double>>& iTurnController,
+    okapi::QLength iLookAheadDistance
+){
     chassis = iChassis;
     odometry = iOdometry;
     distController = iDistController;
@@ -25,8 +27,9 @@ void PurePursuitController::moveToPoint(const Point& iPoint){
         double distOutput = distController->step(-pos.point.distTo(iPoint).convert(okapi::inch));
         double turnOutput = turnController->step(-rescale180(targetAngle - pos.rotation.Theta()).convert(okapi::degree)); 
         double xOutput = distOutput * cos(pos.point.angleTo(iPoint).convert(okapi::radian));
-        double yOutput = distOutput * cos(pos.point.angleTo(iPoint).convert(okapi::radian));
-        chassis->fieldOrientedXArcade(xOutput, -yOutput, turnOutput, pos.rotation.Theta());
+        double yOutput = distOutput * sin(pos.point.angleTo(iPoint).convert(okapi::radian));
+        chassis->fieldOrientedXArcade(xOutput, -yOutput, -turnOutput, pos.rotation.Theta());
+        
         pros::delay(10);
     }while(!distController->isSettled() && !turnController->isDisabled());
 
@@ -45,7 +48,7 @@ void PurePursuitController::followPath(const DiscretePath& iPath){
         double distOutput = distController->step(-pos.point.distTo(target).convert(okapi::inch));
         double turnOutput = turnController->step(-rescale180(targetAngle - pos.rotation.Theta()).convert(okapi::degree)); 
         double xOutput = distOutput * cos(pos.point.angleTo(target).convert(okapi::radian));
-        double yOutput = distOutput * cos(pos.point.angleTo(target).convert(okapi::radian));
+        double yOutput = distOutput * sin(pos.point.angleTo(target).convert(okapi::radian));
         chassis->fieldOrientedXArcade(xOutput, -yOutput, turnOutput, pos.rotation.Theta());
         pros::delay(10);
     }while(!distController->isSettled() && !turnController->isDisabled());

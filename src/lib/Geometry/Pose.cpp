@@ -3,7 +3,7 @@
 namespace lib{
 
 Pose::Pose(const okapi::OdomState& iState){
-    point = Point(iState.y, -1 * iState.x);
+    point = Point(iState.x, iState.y);
     rotation = Rotation(rescale180(-1 * iState.theta));
 }
 

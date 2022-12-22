@@ -50,4 +50,17 @@ int DiscretePath::size() const{
     return path.size();
 }
 
+std::string DiscretePath::str() const{
+    std::string ret = "";
+    for(auto pt : path){
+        ret += std::to_string(pt.X().convert(okapi::foot)) + '\n';
+    }
+
+    for(auto pt : path){
+        ret += std::to_string(pt.Y().convert(okapi::foot)) + '\n';
+    }
+
+    return ret;
+}
+
 }

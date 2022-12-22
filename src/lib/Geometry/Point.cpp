@@ -38,7 +38,7 @@ void Point::setY(okapi::QLength iY){
 }
 
 Point Point::operator+(const Point& rhs) const{
-    return {x + rhs.x, x + rhs.y};
+    return {x + rhs.x, y + rhs.y};
 }
 
 Point Point::operator-(const Point& rhs) const{

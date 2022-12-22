@@ -1,4 +1,5 @@
 #include "DiscretePath.hpp"
+#include<iostream>
 
 namespace lib{
 

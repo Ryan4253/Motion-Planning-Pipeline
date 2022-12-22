@@ -2,6 +2,7 @@
 #include "lib/Geometry/Point.hpp"
 #include<vector>
 #include<cmath>
+#include<string>
 
 namespace lib{
 
@@ -26,6 +27,8 @@ class DiscretePath{
     okapi::QLength getLength() const;
 
     int size() const;
+
+    std::string str() const;
 
     private:
     std::vector<Point> path;
